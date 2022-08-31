@@ -1,9 +1,7 @@
-package ru.javarush.amutovin.core.island.Animals.Carnivores;
+package ru.javarush.amutovin.core.island.Animals.carnivores;
 
-import lombok.Getter;
-import lombok.Setter;
 import ru.javarush.amutovin.core.island.Animals.Animal;
-import ru.javarush.amutovin.core.island.Interfaces.Carnivore;
+import ru.javarush.amutovin.core.island.interfaces.Carnivore;
 
 import java.util.Random;
 

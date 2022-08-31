@@ -1,12 +1,7 @@
-package ru.javarush.amutovin.core.island.Animals.Herbivores;
+package ru.javarush.amutovin.core.island.Animals.herbivores;
 
-import lombok.Getter;
-import lombok.Setter;
 import ru.javarush.amutovin.core.island.Animals.Animal;
-import ru.javarush.amutovin.core.island.Animals.Carnivores.Boa;
-import ru.javarush.amutovin.core.island.Interfaces.Herbivore;
-
-import java.util.Random;
+import ru.javarush.amutovin.core.island.interfaces.Herbivore;
 
 public class Caterpillar extends Animal implements Herbivore {
     public Caterpillar() {

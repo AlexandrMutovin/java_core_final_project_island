@@ -97,4 +97,19 @@ public class Island {
         return stringBuilder.toString();
     }
 
+    public void goEat(){
+        for (int i = 0;i < cells.length; i++) {
+            for (int j = 0; j < cells[i].length; j++){
+
+                cells[i][j].startEat(Data.getWeightAnimal(), Data.getWhoCanEat());
+
+            }
+        }
+
+    }
+
+    public void killAnimal(){
+
+    }
+
 }

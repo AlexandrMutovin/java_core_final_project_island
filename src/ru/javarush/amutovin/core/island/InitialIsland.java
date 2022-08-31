@@ -1,8 +1,8 @@
 package ru.javarush.amutovin.core.island;
 
 import ru.javarush.amutovin.core.island.Animals.Animal;
-import ru.javarush.amutovin.core.island.Animals.Carnivores.*;
-import ru.javarush.amutovin.core.island.Animals.Herbivores.*;
+import ru.javarush.amutovin.core.island.Animals.carnivores.*;
+import ru.javarush.amutovin.core.island.Animals.herbivores.*;
 
 import java.util.*;
 
@@ -64,7 +64,7 @@ public class InitialIsland {
             int maxCountAnimalThisType = maxAnimalInCell.get(animal.getTypeAnimal());
             Random random = new Random();
             int randomCount = random.nextInt(maxCountAnimalThisType);
-            cell.setPlants(random.nextInt(1000));
+            cell.setPlants(random.nextDouble(1000.0));
             cell.setCurrentX(x);
             cell.setCurrentY(y);
 
