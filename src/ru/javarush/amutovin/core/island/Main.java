@@ -9,6 +9,9 @@ public class Main {
         Island island = InitialIsland.getInstance(sizeX,sizeY);
         System.out.println(island.getStatistic());
         island.startNewDay(countOfDay);
+        System.out.println();
+        System.out.printf("Прошло %d дней,  статистика следующая:",countOfDay);
+        System.out.println();
         System.out.println(island.getStatistic());
 
     }
