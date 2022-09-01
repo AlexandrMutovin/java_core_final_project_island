@@ -14,7 +14,7 @@ public class Bear extends Animal implements Carnivore {
     public Bear(){
         setTypeAnimal("Bear");
         this.weight = 500;
-        this.maxSpeed = 2;
+        this.maxDistance = 2;
         this.fullEat = 80;
 
         Random random = new Random();

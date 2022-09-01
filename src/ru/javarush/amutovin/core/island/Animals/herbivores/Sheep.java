@@ -10,7 +10,7 @@ public class Sheep extends Animal implements Herbivore {
         setTypeAnimal("Sheep");
         this.weight = 70;
         this.fullEat = 15;
-        this.maxSpeed = 3;
+        this.maxDistance = 3;
         Random random = new Random();
         this.currentEat = random.nextDouble(fullEat);
     }

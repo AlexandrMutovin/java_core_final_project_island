@@ -4,13 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 import ru.javarush.amutovin.core.island.Animals.Animal;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Island {
+    private static final int RANGE_FOR_SELECT_AXIS = 2;
+    private static final int X_AXIS = 0;
+    private static final int Y_AXIS = 0;
+
     @Getter
     @Setter
     private int sizeX;
@@ -72,8 +73,8 @@ public class Island {
         return plantCount;
     }
 
-    private String getUniqueAnimalCount(){
-        Map<String, Integer>  mapAminal = new TreeMap<>();
+    private String getUniqueAnimalCount() {
+        Map<String, Integer> mapAminal = new TreeMap<>();
         StringBuilder stringBuilder = new StringBuilder();
         List<Animal> allAnimalList = new ArrayList<>();
 
@@ -83,33 +84,78 @@ public class Island {
             }
 
             mapAminal = allAnimalList.stream()
-            .collect(Collectors.toMap(key -> key.getClass().getSimpleName(),
-             value -> 1, (value, value2) -> (int)value + 1,
-             TreeMap::new
-             ));
+                    .collect(Collectors.toMap(key -> key.getClass().getSimpleName(),
+                            value -> 1, (value, value2) -> (int) value + 1,
+                            TreeMap::new
+                    ));
 
         }
 
-        for (Map.Entry<String, Integer> pair: mapAminal.entrySet()) {
+        for (Map.Entry<String, Integer> pair : mapAminal.entrySet()) {
             stringBuilder.append(pair.getKey() + " = " + pair.getValue());
             stringBuilder.append(System.getProperty("line.separator"));
         }
         return stringBuilder.toString();
     }
 
-    public void goEat(){
-        for (int i = 0;i < cells.length; i++) {
-            for (int j = 0; j < cells[i].length; j++){
 
-                cells[i][j].startEat(Data.getWeightAnimal(), Data.getWhoCanEat());
+    public void startNewDay(int countOfDay) {
+        for (int dayNum = 0; dayNum < countOfDay; dayNum++) {
+            for (int x = 0; x < cells.length; x++) {
+                for (int y = 0; y < cells[x].length; y++) {
+                    cells[x][y].setPlants(new Random().nextDouble(1000.0));
+                    cells[x][y].hungry();
+                    cells[x][y].startEat(Data.getWeightAnimal(), Data.getWhoCanEat());
+                    cells[x][y].killAnimal();
+                }
+            }
+            startMove();
+        }
+    }
 
+    public void startMove() {
+        Cell[][] tempCells = initialTempCells();
+
+        List<Animal> currentAnimalList = new ArrayList<>();
+        Random random = new Random();
+        for (int x = 0; x < cells.length; x++) {
+            for (int y = 0; y < cells[x].length; y++) {
+                currentAnimalList = cells[x][y].getAnimalList();
+
+                for (int i = 0; i< currentAnimalList.size(); i++){
+                    Animal nextAnimal = currentAnimalList.get(i);
+                    int newCoordinatesMove = nextAnimal.move();
+                    int selectAxis = random.nextInt(RANGE_FOR_SELECT_AXIS);
+                    if (selectAxis == X_AXIS) {
+                        if ((newCoordinatesMove + x) < sizeX) {
+                            tempCells[newCoordinatesMove + x][y].addAnimal(nextAnimal);
+                        } else {
+                            tempCells[x][y].addAnimal(nextAnimal);
+                        }
+                    } else if ((newCoordinatesMove + y) < sizeY){
+
+                        tempCells[x][newCoordinatesMove + y].addAnimal(nextAnimal);
+                    } else {
+                        tempCells[x][y].addAnimal(nextAnimal);
+                    }
+                }
             }
         }
 
+        for (int x = 0; x < tempCells.length; x++){
+            for (int y = 0; y < tempCells[x].length; y++){
+                cells[x][y].setAnimalList(tempCells[x][y].getAnimalList());
+            }
+        }
     }
-
-    public void killAnimal(){
-
+    private Cell[][] initialTempCells(){
+        Cell[][] tempCells= new Cell[sizeX][sizeY];
+        for (int x = 0; x < tempCells.length; x++){
+            for (int y = 0; y < tempCells[x].length; y++){
+                tempCells[x][y] = new Cell();
+            }
+        }
+        return tempCells;
     }
 
 }

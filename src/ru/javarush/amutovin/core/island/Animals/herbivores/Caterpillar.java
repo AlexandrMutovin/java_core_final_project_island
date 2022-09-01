@@ -7,7 +7,7 @@ public class Caterpillar extends Animal implements Herbivore {
     public Caterpillar() {
         setTypeAnimal("Caterpillar");
         this.weight = 0.01;
-        this.maxSpeed = 0;
+        this.maxDistance = 0;
         this.fullEat = 0;
     }
 

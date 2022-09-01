@@ -10,7 +10,7 @@ public class Wolf extends Animal implements Carnivore {
         setTypeAnimal("Wolf");
         this.weight = 50;
         this.fullEat = 8;
-        this.maxSpeed = 3;
+        this.maxDistance = 3;
         Random random = new Random();
         this.currentEat = random.nextDouble(fullEat);
     }

@@ -9,7 +9,7 @@ public class Eagle extends Animal implements Carnivore {
     public Eagle(){
         setTypeAnimal("Eagle");
         this.weight = 6;
-        this.maxSpeed = 3;
+        this.maxDistance = 3;
         this.fullEat = 1;
         Random random = new Random();
         this.currentEat = random.nextDouble(fullEat);

@@ -11,7 +11,7 @@ public class Goat extends Animal implements Herbivore {
         setTypeAnimal("Goat");
 
         this.weight = 60;
-        this.maxSpeed = 3;
+        this.maxDistance = 3;
         this.fullEat = 10;
         Random random = new Random();
         this.currentEat = random.nextDouble(fullEat);

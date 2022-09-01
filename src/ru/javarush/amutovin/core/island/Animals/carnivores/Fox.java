@@ -9,7 +9,7 @@ public class Fox extends Animal implements Carnivore {
     public Fox(){
         setTypeAnimal("Fox");
         this.weight = 8;
-        this.maxSpeed = 2;
+        this.maxDistance = 2;
         this.fullEat = 2;
         Random random = new Random();
         this.currentEat = random.nextDouble(fullEat);

@@ -10,7 +10,7 @@ public class Boar extends Animal implements Herbivore {
     public Boar(){
         setTypeAnimal("Boar");
         this.weight = 400;
-        this.maxSpeed = 2;
+        this.maxDistance = 2;
         this.fullEat = 50;
         Random random = new Random();
         this.currentEat = random.nextDouble(fullEat);

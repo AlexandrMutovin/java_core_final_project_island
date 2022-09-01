@@ -47,6 +47,7 @@ public class InitialIsland {
     public static Island getInstance(int maxX, int maxY) {
         Cell[][] cells = new Cell[maxX][maxY];
 
+
         for (int x = 0; x < cells.length; x++) {
             for (int y = 0; y < cells[0].length; y++) {
                 cells[x][y] = getCell(x, y);

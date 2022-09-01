@@ -9,7 +9,7 @@ public class Duck extends Animal implements Herbivore {
     public Duck(){
         setTypeAnimal("Duck");
         this.weight = 1;
-        this.maxSpeed = 4;
+        this.maxDistance = 4;
         this.fullEat = 0.15;
         Random random = new Random();
         this.currentEat = random.nextDouble(fullEat);

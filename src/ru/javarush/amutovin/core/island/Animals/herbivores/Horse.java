@@ -13,7 +13,7 @@ public class Horse extends Animal implements Herbivore {
     public Horse(){
         setTypeAnimal("Horse");
         this.weight = 400;
-        this.maxSpeed = 4;
+        this.maxDistance = 4;
         this.fullEat = 60;
         Random random = new Random();
         this.currentEat = random.nextDouble(fullEat);

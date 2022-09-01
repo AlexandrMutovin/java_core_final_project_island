@@ -9,7 +9,7 @@ public class Buffalo extends Animal implements Herbivore {
     public Buffalo(){
         setTypeAnimal("Buffalo");
         this.weight = 700;
-        this.maxSpeed = 3;
+        this.maxDistance = 3;
         this.fullEat = 100;
         Random random = new Random();
         this.currentEat = random.nextDouble(fullEat);

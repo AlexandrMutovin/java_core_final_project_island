@@ -10,7 +10,7 @@ public class Mouse extends Animal implements Herbivore {
         setTypeAnimal("Mouse");
         this.weight = 0.05;
         this.fullEat = 0.01;
-        this.maxSpeed = 1;
+        this.maxDistance = 1;
         Random random = new Random();
         this.currentEat = random.nextDouble(fullEat);
     }

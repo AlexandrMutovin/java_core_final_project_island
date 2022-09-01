@@ -10,7 +10,7 @@ public class Rabbit extends Animal implements Herbivore {
     public Rabbit(){
         setTypeAnimal("Rabbit");
         this.weight = 2;
-        this.maxSpeed = 2;
+        this.maxDistance = 2;
         this.fullEat = 0.45;
         Random random = new Random();
         this.currentEat = random.nextDouble(fullEat);

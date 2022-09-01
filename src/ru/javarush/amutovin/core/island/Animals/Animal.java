@@ -9,22 +9,28 @@ import ru.javarush.amutovin.core.island.interfaces.Reproductable;
 import java.util.*;
 
 public abstract class Animal implements Eatable, Movable, Reproductable {
+
+    protected static final int RANGE_FOR_AXIS_SELECTION = 2;
     @Getter
     private String typeAnimal;
 
     protected double weight;
 
-    protected int maxSpeed;
+    protected int maxDistance;
 
     @Getter
+    @Setter
     protected double currentEat;
 
     @Getter
     protected double fullEat;
 
     @Override
-    public boolean move() {
-        return false;
+    public Integer move() {
+        Random random = new Random();
+        int selectAxis = random.nextInt(RANGE_FOR_AXIS_SELECTION);
+        return  random.nextInt(maxDistance +1);
+
     }
 
     private String findRandomEat(Map<String, Double> weightAnimal, Map<String, TreeMap<Integer, String[]>> whoCanEat) {
@@ -41,7 +47,12 @@ public abstract class Animal implements Eatable, Movable, Reproductable {
 
     @Override
     public void eat(double whoCanIEat) {
-        currentEat += currentEat;
+        if (fullEat > currentEat) {
+            double diff = fullEat - currentEat;
+            if (whoCanIEat > diff){
+                currentEat = fullEat;
+            } else currentEat = currentEat + whoCanIEat;
+        }
     }
 
     protected void setTypeAnimal(String typeAnimal) {

@@ -2,9 +2,9 @@ package ru.javarush.amutovin.core.island;
 
 public class Main {
     public static void main(String[] args) {
-        Island island = InitialIsland.getInstance(1,1);
+        Island island = InitialIsland.getInstance(10,10);
         System.out.println(island.getStatistic());
-        island.goEat();
+        island.startNewDay(50);
         System.out.println(island.getStatistic());
 
     }

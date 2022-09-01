@@ -24,15 +24,22 @@ public class Cell {
 
     @Setter
     @Getter
-    private Double plants;
+    private double plants;
 
     @Getter
+    @Setter
     private List<Animal> animalList = new ArrayList<>();
 
     public void addAnimal(Animal animal) {
         animalList.add(animal);
     }
 
+    public void hungry(){
+         animalList.forEach(animal -> {
+            animal.setCurrentEat(0);
+
+        });
+    }
     public void killAnimal() {
         Iterator<Animal> iteratorAnimal = animalList.iterator();
         while (iteratorAnimal.hasNext()){
@@ -72,10 +79,8 @@ public class Cell {
                     continue;
                 }
                 if (whoCanIEat.equals(animalList.get(j).getTypeAnimal())){
-                   // System.out.println("dell " + animalList.get(j).getTypeAnimal());
                     animalList.set(j, null);
                     nextAnimal.eat(weightHowCanIEat);
-                   // System.out.println("Я " + nextAnimal.getTypeAnimal() +", " + " Съел " + whoCanIEat);
                     break;
                 }
             }
@@ -89,6 +94,10 @@ public class Cell {
             }
         }
 
+    }
+
+    public Integer startMove(int nextAnimal){
+        return animalList.get(nextAnimal).move();
     }
 
     private String findRandomEat(Map<String, Double> weightAnimal, Map<String, TreeMap<Integer, String[]>> whoCanEat, Animal animal) {

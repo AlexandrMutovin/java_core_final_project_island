@@ -11,7 +11,7 @@ public class Deer extends Animal implements Herbivore {
         setTypeAnimal("Deer");
         this.weight = 300;
         this.fullEat = 50;
-        this.maxSpeed = 4;
+        this.maxDistance = 4;
         Random random = new Random();
         this.currentEat = random.nextDouble(fullEat);
     }

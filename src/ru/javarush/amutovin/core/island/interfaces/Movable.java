@@ -1,5 +1,7 @@
 package ru.javarush.amutovin.core.island.interfaces;
 
+import java.util.Map;
+
 public interface Movable {
-    public boolean move();
+    public Integer move();
 }

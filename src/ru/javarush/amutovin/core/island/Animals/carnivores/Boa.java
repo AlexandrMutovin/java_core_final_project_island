@@ -9,7 +9,7 @@ public class Boa extends Animal implements Carnivore {
     public Boa(){
         setTypeAnimal("Boa");
         this.weight = 15;
-        this.maxSpeed = 1;
+        this.maxDistance = 1;
         this.fullEat = 3;
         Random random = new Random();
         this.currentEat = random.nextDouble(fullEat);
