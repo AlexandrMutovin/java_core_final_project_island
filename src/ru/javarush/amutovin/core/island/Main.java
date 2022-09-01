@@ -2,9 +2,13 @@ package ru.javarush.amutovin.core.island;
 
 public class Main {
     public static void main(String[] args) {
-        Island island = InitialIsland.getInstance(10,10);
+        int sizeX = Integer.parseInt(args[0]);
+        int sizeY = Integer.parseInt(args[1]);
+        int countOfDay = Integer.parseInt(args[1]);
+
+        Island island = InitialIsland.getInstance(sizeX,sizeY);
         System.out.println(island.getStatistic());
-        island.startNewDay(5);
+        island.startNewDay(countOfDay);
         System.out.println(island.getStatistic());
 
     }
