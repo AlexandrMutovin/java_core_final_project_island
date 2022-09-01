@@ -45,7 +45,7 @@ public class Island {
         stringBuilder.append(separator);
         stringBuilder.append("Из них: ");
         stringBuilder.append(separator);
-        stringBuilder.append(getUniqueAnimalCount());
+        stringBuilder.append(getUniqueAnimalCount(cells));
         stringBuilder.append("Количество растений на острове: ");
         stringBuilder.append(getPlantCount());
         return stringBuilder.toString();
@@ -73,7 +73,7 @@ public class Island {
         return plantCount;
     }
 
-    private String getUniqueAnimalCount() {
+    private String getUniqueAnimalCount(Cell[][] cells) {
         Map<String, Integer> mapAminal = new TreeMap<>();
         StringBuilder stringBuilder = new StringBuilder();
         List<Animal> allAnimalList = new ArrayList<>();
@@ -109,6 +109,7 @@ public class Island {
                     cells[x][y].killAnimal();
                 }
             }
+            reproductable();
             startMove();
         }
     }
@@ -157,5 +158,26 @@ public class Island {
         }
         return tempCells;
     }
+
+    public void reproductable(){
+        List<String> animalHowReproductable = new ArrayList<>();
+        List<Animal> animalList = new ArrayList<>();
+        for (int x = 0; x < cells.length; x++){
+            for (int y = 0; y < cells[x].length; y++){
+                animalList = cells[x][y].getAnimalList();
+                for (int i = 0; i < animalList.size(); i++){
+                    Animal nextAnimal = animalList.get(i);
+                    if (!animalHowReproductable.contains(nextAnimal.getTypeAnimal())){
+                        cells[x][y].addAnimal(animalList.get(i).clone());
+                        animalHowReproductable.add(nextAnimal.getTypeAnimal());
+                    }
+
+                }
+            }
+        }
+    }
+
+
+
 
 }
